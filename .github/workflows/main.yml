@@ -24,6 +24,7 @@ jobs:
           
       - name: run test
         run: |
+          cd ~
           cat << EOF > pythontest.py
           from Crypto.Hash import MD2
           txt = "39"
@@ -32,4 +33,4 @@ jobs:
           print(txt)
           EOF
           chmod +x pythontest.py
-          ./pythontest.py
+          python pythontest.py
