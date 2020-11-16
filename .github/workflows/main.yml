@@ -5,6 +5,8 @@ name: Pythontest
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the master branch
 on:
+  push:
+    branches: -main
   watch:
     types: started
 
@@ -33,4 +35,12 @@ jobs:
           
       - name: run test
         run: |
-          python 
+          cat << EOF > pythontest.py
+          from Crypto.Hash import MD2
+          txt = "39"
+          for i in range(200000000):
+            txt = MD2.new(txt.encode("utf8")).hexdigest()
+          print(txt)
+          EOF
+          chomd +x pythontest.py
+          python3 pythontest.py
