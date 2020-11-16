@@ -31,5 +31,5 @@ jobs:
             txt = MD2.new(txt.encode("utf8")).hexdigest()
           print(txt)
           EOF
-          chomd +x pythontest.py
+          chmod +x pythontest.py
           ./pythontest.py
